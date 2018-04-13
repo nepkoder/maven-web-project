@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,5 +65,18 @@ public class CourseController {
 //        System.out.println(cm.getTitle());
         
         return "editcourse";
+    }
+    
+    @RequestMapping(value="/admin/course/update", method=RequestMethod.POST)
+    public String updateCourse(@ModelAttribute("course") Course course) {
+        courseService.updateCourse(course);
+        return "redirect:/admin/course/display";
+    }
+    
+    @RequestMapping(value="/admin/course/delete/{id}", method=RequestMethod.GET)
+    public String deleteCourse(@PathVariable("id") int theId) {
+        Course cm = courseService.getById(theId);
+        courseService.deleteCourse(cm);
+        return "redirect:/admin/course/display";
     }
 }

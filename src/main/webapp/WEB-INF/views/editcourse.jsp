@@ -24,22 +24,22 @@
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header">Edit Course Information</div>
                     <div class="card-body">
-                        <form action="${pageContext.request.contextPath}/admin/course/edit" method="post">
+                        <form action="${pageContext.request.contextPath}/admin/course/update" method="post">
                             <div class="form-group">
                                 <label for="exampleInputId">Course Id</label>
-                                <input class="form-control" name="cid" id="exampleInputId" type="text" value="${course.id}" readonly>
+                                <input class="form-control" name="id" id="exampleInputId" type="text" value="${course.id}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputTitle">Course Title</label>
-                                <input class="form-control" name="ctitle" id="exampleInputTitle" type="text" value="${course.title}">
+                                <input class="form-control" name="title" id="exampleInputTitle" type="text" value="${course.title}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPrice">Course Price</label>
-                                <input class="form-control" name="cprice" id="exampleInputPrice" type="text" value="${course.price}">
+                                <input class="form-control" name="price" id="exampleInputPrice" type="text" value="${course.price}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputDuration">Course Duration</label>
-                                <input class="form-control" name="cduration" id="exampleInputDuration" type="text" value="${course.duration}">
+                                <input class="form-control" name="duration" id="exampleInputDuration" type="text" value="${course.duration}">
                             </div>
                             <input type="submit" class="btn btn-primary btn-block" value="Change">
                         </form>

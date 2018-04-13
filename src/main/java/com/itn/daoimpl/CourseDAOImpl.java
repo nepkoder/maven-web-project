@@ -58,10 +58,19 @@ public class CourseDAOImpl implements CourseDAO {
     public void update(Course cm) {
         Session s = sessionFactory.openSession();
         s.beginTransaction();
+        s.update(cm);
+        s.getTransaction().commit();
+        s.close();
     }
     
     @Override
-    public void delete(int id) {
+    public void delete(Course c) {
+        
+        Session s = sessionFactory.openSession();
+        s.beginTransaction();
+        s.delete(c);
+        s.getTransaction().commit();
+        s.close();
         
     }
 }

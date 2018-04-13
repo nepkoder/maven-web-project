@@ -19,5 +19,5 @@ public interface CourseService {
     
     Course getById(int id);
     void updateCourse(Course cm);
-    void deleteCourse(int id);
+    void deleteCourse(Course c);
 }

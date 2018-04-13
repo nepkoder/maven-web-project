@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="course_tbl")
 public class Course implements Serializable {
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="course_id")
