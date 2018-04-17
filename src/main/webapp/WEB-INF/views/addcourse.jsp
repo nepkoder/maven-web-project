@@ -38,7 +38,7 @@
       <div class="card-body">
           <div class="col-md-9">
           <form action="${pageContext.request.contextPath}/admin/course/add" method="POST">
-           
+              <input type="hidden"
              
           <div class="form-group">
             <div class="form-row">

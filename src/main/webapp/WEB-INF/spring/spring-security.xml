@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+">
+    
+    <!--<security:http pattern="/Admin/login" security="none"/>-->
+    
+    <security:http auto-config="true" use-expressions="true">
+        
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <security:form-login username-parameter="username"
+                             password-parameter="password"
+                             default-target-url="/Admin/dashboard"
+                             authentication-failure-url="/admin_login"
+                             login-page="/login"               
+                             login-processing-url="/login" /> 
+        
+        
+        <!--login-page="/login"-->
+        <security:logout
+        invalidate-session="true"
+        delete-cookies="AppCookies"
+        logout-url="/logout"
+        logout-success-url="/login"
+        />
+        
+    </security:http>
+    
+    <security:authentication-manager>
+        <security:authentication-provider>
+            
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="select username, password, active from user_login where username=?"
+                                        authorities-by-username-query="select ue.username, r.authority from user_login as ue, user_role as r where ue.id=r.uid and username=?"
+            />
+            
+        </security:authentication-provider>
+        
+    </security:authentication-manager>
+
+</beans>
