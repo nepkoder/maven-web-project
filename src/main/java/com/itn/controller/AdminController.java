@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AdminController {
     
-   @RequestMapping(value={"/admin/home","/Admin/dashboard"},
+   @RequestMapping(value={"/admin/home","/Admin/dashboard","/homepage"},
            method=RequestMethod.GET) 
     public String adminMain(){
-        return "adminhome";
+        return "homepage";
     }
     
     @RequestMapping(value = "/admin_login", method = RequestMethod.GET)
